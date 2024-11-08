@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-lvg)@ynw=@!xaz+)lvmgkwmjbdhkotj++soin(k=25l$5sazg4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,10 +41,30 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+    'rest_framework.authtoken',
     'strawberry.django',
     'apps.ingredients',
     'apps.recipes',
 ]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default
+]
+
+# Allow GraphQL to work only for authenticated users
+STRAWBERRY_AUTHENTICATION = {
+    'JWT': {
+        'ENABLE': True,  # Enable JWT authentication
+    }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
