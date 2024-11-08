@@ -39,7 +39,6 @@ class AuthenticatedGraphQLViewMixin:
             raise PermissionDenied(f"Authentication required - {str(e)}")
 
 
-
 class AuthenticatedGraphQLView(AuthenticatedGraphQLViewMixin, GraphQLView):
     pass
 
@@ -47,10 +46,14 @@ class AuthenticatedGraphQLView(AuthenticatedGraphQLViewMixin, GraphQLView):
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(
-        "api/token/", jwt_views.TokenObtainPairView.as_view(), name="token_obtain_pair"
+        "api/token/",
+        csrf_exempt(jwt_views.TokenObtainPairView.as_view()),
+        name="token_obtain_pair",
     ),
     path(
-        "api/token/refresh/", jwt_views.TokenRefreshView.as_view(), name="token_refresh"
+        "api/token/refresh/",
+        csrf_exempt(jwt_views.TokenRefreshView.as_view()),
+        name="token_refresh",
     ),
     path("graphql/", csrf_exempt(AuthenticatedGraphQLView.as_view(schema=schema))),
 ]
