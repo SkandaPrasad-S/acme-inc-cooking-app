@@ -1,4 +1,3 @@
-# graphql/types.py
 from strawberry import auto
 from .models import Ingredient
 import strawberry

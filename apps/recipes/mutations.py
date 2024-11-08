@@ -1,3 +1,11 @@
+# - Get Recipe by ID- Retrieve detailed information on a specific recipe.
+# - Get Recipes List- Fetch a paginated list of recipes, optionally filtered by a search term.
+# - Create Recipe- Add a new recipe with associated ingredients.
+# - Add Ingredient to Recipe- Append an additional ingredient to an existing recipe.
+# - Remove Ingredient from Recipe- Remove an ingredient from a recipe.
+# - Delete Recipe- Delete a recipe and its ingredient associations.
+
+
 from typing import Optional, List
 import strawberry
 from strawberry.types import Info

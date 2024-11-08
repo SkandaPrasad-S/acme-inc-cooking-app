@@ -26,7 +26,7 @@ class AuthenticatedGraphQLViewMixin:
         Override get_context to check if user is authenticated
         """
         try:
-            # Perform authentication
+            # Perform authentication here - overriding get context so that graphql queries cant be executed without it
             auth_result = self.jwt_authenticator.authenticate(request)
             if auth_result is None:
                 raise PermissionDenied("Authentication required")

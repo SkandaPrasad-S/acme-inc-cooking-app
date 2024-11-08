@@ -1,4 +1,10 @@
-# graphql/queries.py
+# - Get Ingredient by ID: Fetch information on a specific ingredient.
+# - Get Ingredients List: Retrieve a list of ingredients, optionally with pagination and search.
+# - Create Ingredient: Add a new ingredient to the database.
+# - Update Ingredient: Modify the details of an existing ingredient.
+# - Delete Ingredient: Remove an ingredient from the database.
+
+
 import strawberry
 from typing import List, Optional
 from strawberry.types import Info

@@ -1,4 +1,3 @@
-# graphql/responses.py
 import strawberry
 from typing import Optional
 from .types import IngredientType
